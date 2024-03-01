@@ -13,8 +13,6 @@ var text_box_Y_max = document.getElementById('Y_max');
 var text_box_pen_X = document.getElementById('pen_X');
 var text_box_pen_Y = document.getElementById('pen_Y');
 
-
-
 function draw_canvas()
 {
     let coef = window.screen.width/3000;
@@ -33,6 +31,7 @@ function draw_canvas()
     
     ctx.fillStyle = 'red';
     ctx.font = "12px serif";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if(Y_b <= 0)
     {
@@ -69,6 +68,22 @@ function refresh_values()
     max_Y = document.getElementById('Y_max').value;
     pen_X = document.getElementById('pen_X').value;
     pen_Y = document.getElementById('pen_Y').value;
+    change_configs_txt();
+}
+
+function change_configs_txt()
+{
+    let text = document.getElementById('configs');
+    let output = 
+    "p=" + X_b + "\n"
+    + "w2y=" + Y_b + "\n"
+    + "pen_x0=" + pen_X+ "\n"
+    + "pen_y0=" + pen_Y + "\n"
+    + "x_ratio=1.0" + "\n"
+    + "y_ratio=1.0" + "\n"
+    + "x_angle=0" + "\n"
+    + "y_angle=0"
+    text.innerText = output;
 }
 
 text_box_X_b.addEventListener("change", function(){refresh_values();draw_canvas();});
@@ -76,5 +91,5 @@ text_box_Y_b.addEventListener("change", function(){refresh_values();draw_canvas(
 text_box_Y_max.addEventListener("change", function(){refresh_values();draw_canvas();});
 text_box_pen_X.addEventListener("change", function(){refresh_values();draw_canvas();});
 text_box_pen_Y.addEventListener("change", function(){refresh_values();draw_canvas();});
-
+change_configs_txt();
 draw_canvas();

@@ -13,15 +13,22 @@
         }
         /* Style pour la matrice de zones de texte */
         .text-zone {
-            width: calc(50% / 3);
-            height: calc(20vh / 2);
-            float: left;
-            box-sizing: border-box;
-            padding: 10px;
-            border: 1px solid #000;
-            resize: both;
-            overflow: auto;
+        width: calc(100% / 3);
+        height: calc(20vh / 2);
+        margin: 0 auto; /* Ajoutez cette ligne pour centrer horizontalement */
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid #000;
+        resize: both;
+        overflow: auto;
         }
+
+        .text-container {
+            margin: 0 auto; /* Centrer horizontalement */
+            text-align: center; /* Centrer le contenu horizontalement */
+        }
+
+
     </style>
 </head>
 
@@ -29,11 +36,11 @@
 
     <div>
         <input type="number" id="X_b" size="10" value="1800" />
-        <label for="name">position en X du point d'accrohe B</label>
+        <label for="name">X coord of B ancor</label>
     </div>
     <div>
         <input type="number" id="Y_b" size="10" value="-25"/>
-        <label for="name">position en Y du point d'accroche B (peut valoir 0)</label>
+        <label for="name">Y coord of B ancor (might be 0)</label>
     </div>
     <div>
         <input type="number" id="Y_max" size="10" value="1500"/>
@@ -41,28 +48,34 @@
     </div>
     <div>
         <input type="number" id="pen_X" size="10" value="740"/>
-        <label for="name">position en X du stylo</label>
+        <label for="name">X coord of starting point</label>
     </div>
     <div>
         <input type="number" id="pen_Y"  size="10" value="840"/>
-        <label for="name">position en Y du stylo</label>
-    </div>
-    <canvas id="myCanvas"></canvas>
-    
-    <div>
-        <label for="draw">draw</label>
-        <div class="text-zone" id="draw" contenteditable="false">
-            Zone de texte 6
-        </div>
+        <label for="name">Y coord of starting point</label>
     </div>
 
-    <div>
-        <div class="text-zone" id="configs" contenteditable="true">
-            Zone de texte 1
-        </div>
-        <label for="configs">configs</label>
-    </div>
+    <canvas id="myCanvas"></canvas>
     
+        <!-- Zone de texte pour dessiner -->
+        <div class="text-container">
+            <p>draw.txt:</p>
+            <div class="text-zone" id="draw" contenteditable="false">
+                Zone de texte pour dessiner
+            </div>
+            <button id="downloadDraw">download draw.txt</button>
+        </div>
+    
+        <!-- Zone de texte pour les configurations -->
+        <div class="text-container">
+            <p>configs.txt:</p>
+            <div class="text-zone" id="configs" contenteditable="false">
+                Zone de texte pour les configurations
+            </div>
+            <button id="downloadConfigs">download configs.txt</button>
+        </div>
+    
+    <script src="download_files.js"></script>
     <script src="interactions.js"></script>
 
 </body>
