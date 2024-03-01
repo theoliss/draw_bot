@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Draw bot svg interpreter</title>
+    
     <style>
         /* Style pour le canva */
         #myCanvas {
@@ -28,9 +29,20 @@
             text-align: center; /* Centrer le contenu horizontalement */
         }
 
+        .slidecontainer {
+            margin: 0 auto; /* Centrer horizontalement */
+            text-align: center; /* Centrer le contenu horizontalement */
+        }
+
+        .slider {
+            width: 50%; /* Full-width */
+        }
+
 
     </style>
 </head>
+
+<input type="file" id="fileInput" accept=".svg" hidden = "true">
 
 <body>
 
@@ -55,28 +67,45 @@
         <label for="name">Y coord of starting point</label>
     </div>
 
+    <button id="load_svg">load an svg</button>
+
+    <div id="sliders" hidden="true">
+
+        <div class="slidecontainer">
+            <label for="svg_pos_x">X coord</label>
+            <input type="range" min="0" max="1000" value="500" class="slider" id="svg_pos_x">
+        </div>
+        <div class="slidecontainer">
+            <label for="svg_pos_x">Y coord</label>
+            <input type="range" min="0" max="1000" value="500" class="slider" id="svg_pos_y">
+        </div>
+        <div class="slidecontainer">
+            <label for="svg_pos_x">Scale</label>
+            <input type="range" min="0" max="1000" value="500" class="slider" id="svg_scale">
+        </div>
+    </div>
+
     <canvas id="myCanvas"></canvas>
     
-        <!-- Zone de texte pour dessiner -->
-        <div class="text-container">
-            <p>draw.txt:</p>
-            <div class="text-zone" id="draw" contenteditable="false">
-                Zone de texte pour dessiner
-            </div>
-            <button id="downloadDraw">download draw.txt</button>
+    <div class="text-container">
+        <p>draw.txt:</p>
+        <div class="text-zone" id="draw" contenteditable="false">
+            Zone de texte pour dessiner
         </div>
-    
-        <!-- Zone de texte pour les configurations -->
-        <div class="text-container">
-            <p>configs.txt:</p>
-            <div class="text-zone" id="configs" contenteditable="false">
-                Zone de texte pour les configurations
-            </div>
-            <button id="downloadConfigs">download configs.txt</button>
+        <button id="downloadDraw">download draw.txt</button>
+    </div>
+
+    <div class="text-container">
+        <p>configs.txt:</p>
+        <div class="text-zone" id="configs" contenteditable="false">
+            Zone de texte pour les configurations
         </div>
+        <button id="downloadConfigs">download configs.txt</button>
+    </div>
     
     <script src="download_files.js"></script>
     <script src="interactions.js"></script>
+    <script src="svg_treatement.js"></script>
 
 </body>
 </html>

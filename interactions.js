@@ -91,5 +91,6 @@ text_box_Y_b.addEventListener("change", function(){refresh_values();draw_canvas(
 text_box_Y_max.addEventListener("change", function(){refresh_values();draw_canvas();});
 text_box_pen_X.addEventListener("change", function(){refresh_values();draw_canvas();});
 text_box_pen_Y.addEventListener("change", function(){refresh_values();draw_canvas();});
+
 change_configs_txt();
 draw_canvas();
