@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw bot svg interpreter</title>
+    <style>
+        /* Style pour le canva */
+        #myCanvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 0 auto;
+        }
+        /* Style pour la matrice de zones de texte */
+        .text-zone {
+            width: calc(50% / 3);
+            height: calc(20vh / 2);
+            float: left;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #000;
+            resize: both;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <input type="number" id="X_b" size="10" />
+        <label for="name">position en X du point d'accrohe B</label>
+    </div>
+    <div>
+        <input type="number" id="Y_b" size="10" />
+        <label for="name">position en Y du point d'accroche B (peut valoir 0)</label>
+    </div>
+    <div>
+        <input type="number" id="pen_X0" size="10" />
+        <label for="name">position en X du stylo</label>
+    </div>
+    <div>
+        <input type="number" id="pen_Y0"  size="10" />
+        <label for="name">position en Y du stylo</label>
+    </div>
+
+    <canvas id="myCanvas" width="400" height="200"></canvas>
+    
+    <div>
+        <label for="draw">draw</label>
+        <div class="text-zone" id="draw" contenteditable="false">
+            Zone de texte 6
+        </div>
+    </div>
+
+    <div>
+        <div class="text-zone" id="configs" contenteditable="true">
+            Zone de texte 1
+        </div>
+        <label for="configs">configs</label>
+    </div>
+    
+    <script>
+        // Code JavaScript pour dessiner sur le canva
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        // Dessiner un rectangle rouge
+        context.fillStyle = 'red';
+        context.fillRect(10, 10, 100, 100);
+    </script>
+
+</body>
+</html>
