@@ -16,7 +16,6 @@ var text_box_pen_Y = document.getElementById('pen_Y');
 function draw_canvas()
 {
     let coef = window.screen.width/3000;
-    console.log(coef);
     let X_b_draw = X_b * coef;
     let Y_b_draw = Y_b * coef;
     let max_Y_draw = max_Y * coef;
