@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw bot svg interpreter</title>
+    
+    <style>
+        /* Style pour le canva */
+        #myCanvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 0 auto;
+        }
+        /* Style pour la matrice de zones de texte */
+        .text-zone {
+        width: calc(100% / 3);
+        height: calc(20vh / 2);
+        margin: 0 auto; /* Ajoutez cette ligne pour centrer horizontalement */
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid #000;
+        resize: both;
+        overflow: auto;
+        }
+
+        .text-container {
+            margin: 0 auto; /* Centrer horizontalement */
+            text-align: center; /* Centrer le contenu horizontalement */
+        }
+
+        .slidecontainer {
+            margin: 0 auto; /* Centrer horizontalement */
+            text-align: center; /* Centrer le contenu horizontalement */
+        }
+
+        .slider {
+            width: 50%; /* Full-width */
+        }
+
+
+    </style>
+</head>
+
+<input type="file" id="fileInput" accept=".svg" hidden = "true">
+
+<body>
+
+    <div>
+        <input type="number" id="X_b" size="10" value="1800" />
+        <label for="name">X coord of B ancor</label>
+    </div>
+    <div>
+        <input type="number" id="Y_b" size="10" value="-25"/>
+        <label for="name">Y coord of B ancor (might be 0)</label>
+    </div>
+    <div>
+        <input type="number" id="Y_max" size="10" value="1500"/>
+        <label for="name">Max Y value</label>
+    </div>
+    <div>
+        <input type="number" id="pen_X" size="10" value="740"/>
+        <label for="name">X coord of starting point</label>
+    </div>
+    <div>
+        <input type="number" id="pen_Y"  size="10" value="840"/>
+        <label for="name">Y coord of starting point</label>
+    </div>
+
+    <button id="load_svg">load an svg</button>
+
+    <div id="sliders" hidden="true">
+
+        <div class="slidecontainer">
+            <label for="svg_pos_x">X coord</label>
+            <input type="range" min="0" max="1000" value="500" class="slider" id="svg_pos_x">
+        </div>
+        <div class="slidecontainer">
+            <label for="svg_pos_x">Y coord</label>
+            <input type="range" min="0" max="1000" value="500" class="slider" id="svg_pos_y">
+        </div>
+        <div class="slidecontainer">
+            <label for="svg_pos_x">Scale</label>
+            <input type="range" min="0" max="1000" value="500" class="slider" id="svg_scale">
+        </div>
+    </div>
+
+    <button id="done" hidden = "true">Done</button>
+
+    <canvas id="myCanvas"></canvas>
+    
+    <div class="text-container">
+        <p>draw.txt:</p>
+        <div class="text-zone" id="draw" contenteditable="false">
+            Zone de texte pour dessiner
+        </div>
+        <button id="downloadDraw">download draw.txt</button>
+    </div>
+
+    <div class="text-container">
+        <p>configs.txt:</p>
+        <div class="text-zone" id="configs" contenteditable="false">
+            Zone de texte pour les configurations
+        </div>
+        <button id="downloadConfigs">download configs.txt</button>
+    </div>
+    
+    <script src="download_files.js"></script>
+    <script src="interactions.js"></script>
+    <script src="svg_modifications.js"></script>
+    <script src="svg_to_instructions.js"></script>
+
+</body>
+</html>
